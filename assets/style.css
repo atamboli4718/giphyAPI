@@ -1,0 +1,11 @@
+#header {
+    /* border: 5px solid aliceblue; */
+    color: aliceblue;
+    background-color:  rgb(157, 121, 240);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    background-color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
