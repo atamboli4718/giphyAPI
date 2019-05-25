@@ -12,18 +12,27 @@ API:
 1. Ajax get function for 10 images on click of button with character name in it
 2. Display the 10 images in the #entries div
 
-Additional Resources:
-//Bootstrap information for the button I want to use
-//<button type="button" class="btn btn-dark">Dark</button>
-*/
+Additional Resources-
+Bootstrap information for the button I want to use:
+<button type="button" class="btn btn-dark giphyButtons">Dark</button>
+Giphy Api Key:
+8PrL8x52bnoL10zRpUHUhm8xCAXYQCef
 
-//var for the #entries column
-var entries = $("#entries")
+*/
 
 //click event for #submit button
 $("#submit").on("click",function(){
-    //var for the character input
+    //var for the character input from user
     var character = $("#character").val();
+    console.log(character);
     //function to create the button with the character input
-    entries.html("<button type='button' class='btn btn-dark'>"+ character + "</button>");
-})
+    $("#entries").html("<button type='button' class='btn btn-dark giphyButtons' id='"+ character + "'>" + character +"</button>");
+});
+
+$(".giphyButton").on("click",function(){
+    $.ajax({
+        type:'GET',
+        url:''
+    })
+
+});
