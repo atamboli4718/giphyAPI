@@ -22,10 +22,10 @@ Giphy link to play with:
 */
 
 //array to hold the inputs from the user
-var topics=[];
+var topics = [];
 
 //click event for #submit button
-$("#submit").on("click",function(){
+$("#submit").on("click", function () {
     //prevents html from reloading since it is in the <form> element and would break the submit button functionality
     event.preventDefault();
     //var for the character input from user
@@ -34,20 +34,20 @@ $("#submit").on("click",function(){
     console.log("topics: ");
     console.log(topics);
     //did topics.length here to prevent duplicate IDs and therefore duplicate event listeners on unique buttons
-    $("#entries").append("<button type='button' class='btn btn-dark giphyButtons m-1' id='"+ topics.length + "'>" + character +"</button>");
-    $("#"+topics.length).on("click",function(){
+    $("#entries").append("<button type='button' class='btn btn-dark giphyButtons m-1' id='" + topics.length + "'>" + character + "</button>");
+    $("#character").val("");
+    $("#"+topics.length).on("click", function () {
+        //can't use .val in a button, have to use .text
+        var characterButton = $(this).text().trim();
         console.log("inbuttonfunction");
-        // var characterButton = $(this);
-        //console.log(characterButton);
+        console.log(characterButton);
         $.ajax({
-            type:'GET',
-            url:'http://api.giphy.com/v1/gifs/search?q=mickey&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef',
-            // url:'http://api.giphy.com/v1/gifs/search?q=' + characterButton.val().trim() + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef',
-        }).then(function(){
+            type: 'GET',
+            url:'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
+        }).then(function (response) {
             console.log(response);
-            //PREPEND....
-        })
-    
+            $("#gifs").prepend("<img src=" + response.data.images(1).url + "alt='image error' >")
+        });
+
     });
 });
-
