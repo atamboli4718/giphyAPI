@@ -46,8 +46,11 @@ $("#submit").on("click", function () {
             url:'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
         }).then(function (response) {
             console.log(response);
-            $("#gifs").prepend("<img src=" + response.data.images(1).url + "alt='image error' >")
+            $("#gifs").prepend("<img src=" + response.data[0].images.fixed_height_still.url + "alt='image error' >");
         });
 
     });
 });
+
+// var topicImage = $("<img>");
+//             topicImage.attr("src", results[i].images.fixed_height_still.url);
