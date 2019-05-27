@@ -47,8 +47,34 @@ $("#submit").on("click", function () {
         }).then(function (response) {
             console.log(response);
             for (var i = 0; i < response.data.length; i++) {
-                $("#gifs").prepend("<img src='" + response.data[i].images.fixed_height_still.url + "' alt='image error' id='"+characterButton+i+"'>");
+                $("#gifs").prepend("<img src='" + response.data[i].images.fixed_height_still.url + "' alt='image error' id='"+i+"' data-state='still' data-character='"+characterButton +"' >");
             };
+            $('img[data-state="still"]').on("click",function(){
+                console.log("inAjaxStillButton");
+                var thisClicked = $(this);
+                var characterStill = $(this).attr('data-character');
+                var iId=$(this).attr('id');
+                console.log("characterStill")
+                console.log(characterStill);
+                console.log("iId");
+                console.log(iId);
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://api.giphy.com/v1/gifs/search?q=' + characterStill + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
+                }).then(function (response) {
+                    console.log("inAjaxStillResponse")
+                    console.log(response);
+                    console.log('characterStill');
+                    console.log(characterStill);
+                    console.log('iId');
+                    console.log(iId);
+                    for (var i=0; i>response.length; i++) {
+                        if (i==iId) {
+                        $(thisClicked).attr('src', response.data[i].embed_url + "' alt='image error' id='"+iId+"' data-state='animated' data-character='"+characterStill +"' >");
+                        }
+                    }    
+                });  
+            });
         });
     });
 });
