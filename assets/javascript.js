@@ -43,7 +43,7 @@ $("#submit").on("click", function () {
         console.log(characterButton);
         $.ajax({
             type: 'GET',
-            url: 'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
+            url: 'https://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
         }).then(function (response) {
             console.log(response);
             for (var i = 0; i < response.data.length; i++) {
@@ -60,7 +60,7 @@ $("#submit").on("click", function () {
                 console.log(iId);
                 $.ajax({
                     type: 'GET',
-                    url: 'http://api.giphy.com/v1/gifs/search?q=' + characterStill + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
+                    url: 'https://api.giphy.com/v1/gifs/search?q=' + characterStill + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
                 }).then(function (response) {
                     console.log("inAjaxStillResponse")
                     console.log(response);
