@@ -46,9 +46,10 @@ $("#submit").on("click", function () {
             url:'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
         }).then(function (response) {
             console.log(response);
-            $("#gifs").prepend("<img src=" + response.data[0].images.fixed_height_still.url + "alt='image error' >");
+            for(var i=0; i<response.data.length; i++){
+            $("#gifs").prepend("<img src='" + response.data[i].images.fixed_height_still.url + "' alt='image error' >");
+            };    
         });
-
     });
 });
 
