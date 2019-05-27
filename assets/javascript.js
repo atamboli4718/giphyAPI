@@ -36,22 +36,19 @@ $("#submit").on("click", function () {
     //did topics.length here to prevent duplicate IDs and therefore duplicate event listeners on unique buttons
     $("#entries").append("<button type='button' class='btn btn-dark giphyButtons m-1' id='" + topics.length + "'>" + character + "</button>");
     $("#character").val("");
-    $("#"+topics.length).on("click", function () {
+    $("#" + topics.length).on("click", function () {
         //can't use .val in a button, have to use .text
         var characterButton = $(this).text().trim();
         console.log("inbuttonfunction");
         console.log(characterButton);
         $.ajax({
             type: 'GET',
-            url:'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
+            url: 'http://api.giphy.com/v1/gifs/search?q=' + characterButton + '&api_key=8PrL8x52bnoL10zRpUHUhm8xCAXYQCef&limit=10',
         }).then(function (response) {
             console.log(response);
-            for(var i=0; i<response.data.length; i++){
-            $("#gifs").prepend("<img src='" + response.data[i].images.fixed_height_still.url + "' alt='image error' >");
-            };    
+            for (var i = 0; i < response.data.length; i++) {
+                $("#gifs").prepend("<img src='" + response.data[i].images.fixed_height_still.url + "' alt='image error' id='"+characterButton+i+"'>");
+            };
         });
     });
 });
-
-// var topicImage = $("<img>");
-//             topicImage.attr("src", results[i].images.fixed_height_still.url);
