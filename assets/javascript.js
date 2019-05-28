@@ -68,12 +68,15 @@ $("#submit").on("click", function () {
                     console.log(characterStill);
                     console.log('iId');
                     console.log(iId);
-                    for (var i=0; i>response.length; i++) {
-                        if (i==iId) {
-                        $(thisClicked).attr('src', response.data[i].embed_url + "' alt='image error' id='"+iId+"' data-state='animated' data-character='"+characterStill +"' >");
-                        }
-                    }    
-                });  
+                    if ($(thisClicked).attr('data-state')=='still'){
+                    //making still image animated
+                    $(thisClicked).attr('src',response.data[iId].images.fixed_height.url).attr('data-state','animated');  
+                    }
+                    //making animated image still
+                    else {
+                    $(thisClicked).attr('src', response.data[iId].images.fixed_height_still.url).attr('data-state','still');   
+                    }
+                }); 
             });
         });
     });
