@@ -5,9 +5,26 @@
     font-family: cursive;
     
 }
+html {
+    height: 100%;
+    margin: 0;
+}
 body {
     background-color: aliceblue;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100%;
+    margin: 0;
 }
-
-
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -40px;
+}
+.push {
+    height: 40px;
+}
+.footer {
+    background-color: lightslategray;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+}
